@@ -20,7 +20,7 @@
         "somata-repl": "lib/repl.js"
     },
     "dependencies": {
-        "somata": "0.16.x",
+        "somata": "0.0.16",
         "yargs": "1.3.x"
     }
 }
