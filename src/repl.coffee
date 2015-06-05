@@ -7,13 +7,13 @@ argv = require('yargs').argv
 client = new somata.Client
 
 # Set up a readline prompt
-PipelineREPL = require 'hashpipe/repl'
+PipelineREPL = require 'hashpipe/lib/repl'
 
 pipe = new SomataPipeline({client: client})
     .use('http')
     .use('exec')
     .use('encodings')
-    .use(require('hashpipe/modules/redis').connect())
+    .use(require('hashpipe/lib/modules/redis').connect())
     .use(
         'members': (inp, args, ctx, cb) ->
             client.consul_agent.getNodes cb

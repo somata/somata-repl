@@ -1,6 +1,6 @@
 {
     "name": "somata-repl",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Interact with Somata services from a REPL",
     "homepage": "http://github.com/somata/somata-repl",
     "repository": {
