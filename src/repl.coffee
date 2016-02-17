@@ -14,18 +14,6 @@ pipe = new SomataPipeline({client: client})
     .use('exec')
     .use('encodings')
     .use(require('hashpipe/lib/modules/redis').connect())
-    .use(
-        'members': (inp, args, ctx, cb) ->
-            client.consul_agent.getNodes cb
-        'services': (inp, args, ctx, cb) ->
-            client.consul_agent.getServices cb
-        'service-nodes': (inp, args, ctx, cb) ->
-            client.consul_agent.getServiceNodes args[0], cb
-    )
-    .set('vars', 'consul_base', client.consul_agent.base_url)
-    .alias('deregister', 'val | put $consul_base/catalog/deregister')
-    .alias('deregister-all', 'service-nodes || deregister $!')
-    .alias('deregister-first', 'service-nodes | head $(length | - 1) || deregister $!')
 
 repl = new PipelineREPL(pipe)
 
