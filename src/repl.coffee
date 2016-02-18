@@ -11,9 +11,7 @@ PipelineREPL = require 'hashpipe/lib/repl'
 
 pipe = new SomataPipeline({client: client})
     .use('http')
-    .use('exec')
     .use('encodings')
-    .use(require('hashpipe/lib/modules/redis').connect())
 
 repl = new PipelineREPL(pipe)
 
