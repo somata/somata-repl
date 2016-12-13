@@ -11,7 +11,7 @@ SomataPipeline::get = (t, k) ->
     if !found? and t == 'fns'
 
         # Check if the key matches [service].[method]
-        if service_method = k.match /([\w:]+)\.([\w\.]*)/
+        if service_method = k.match /([\w:-]+)\.([\w\.]*)/
             service = service_method[1]
             method = service_method[2] || service
 

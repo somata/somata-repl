@@ -2,16 +2,20 @@
 somata = require 'somata'
 SomataPipeline = require './pipeline'
 fs = require 'fs'
-argv = require('yargs').argv
+minimist = require 'minimist'
 
+argv = minimist process.argv
 client = new somata.Client
 
 # Set up a readline prompt
 PipelineREPL = require 'hashpipe/lib/repl'
 
 pipe = new SomataPipeline({client: client})
+    .use('files')
+    .use('exec')
     .use('http')
     .use('encodings')
+    .use('replace')
 
 repl = new PipelineREPL(pipe)
 
@@ -19,6 +23,7 @@ runWith = (repl, script, cb) ->
     doRunWith = ->
         repl.executeScript script, ->
             cb?() || process.exit()
+
     if !process.stdin.isTTY
         piped = ''
         process.stdin.on 'data', (data) ->
@@ -26,12 +31,13 @@ runWith = (repl, script, cb) ->
         process.stdin.on 'end', ->
             repl.last_out = piped.trim()
             doRunWith()
+
     else
         setTimeout doRunWith, 500
 
 if script_filename = argv.load || argv.l
     # Execute single script
-    console.log "Reading from #{ script_filename }..."
+    console.log "Reading from #{script_filename}..."
     script = fs.readFileSync(script_filename).toString()
     runWith repl, script, ->
         repl.startReadline()
