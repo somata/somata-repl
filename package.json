@@ -1,28 +1,27 @@
 {
-    "name": "somata-repl",
-    "version": "0.1.0",
-    "description": "Interact with Somata services from a REPL",
-    "homepage": "http://github.com/somata/somata-repl",
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/somata/somata-repl.git"
-    },
-    "author": {
-        "name": "Prontotype",
-        "url": "http://prontotype.us/"
-    },
-    "keywords": [
-        "somata",
-        "repl"
-    ],
-    "main": "lib/repl.js",
-    "bin": {
-        "somata-repl": "lib/repl.js"
-    },
-    "dependencies": {
-        "hashpipe": "0.0.9",
-        "somata": "0.2.x",
-        "minimist": "1.2.x"
-    }
+  "name": "somata-repl",
+  "version": "0.1.1",
+  "description": "Interact with Somata services from a REPL",
+  "homepage": "http://github.com/somata/somata-repl",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/somata/somata-repl.git"
+  },
+  "author": {
+    "name": "Prontotype",
+    "url": "http://prontotype.us/"
+  },
+  "keywords": [
+    "somata",
+    "repl"
+  ],
+  "main": "lib/repl.js",
+  "bin": {
+    "somata-repl": "lib/repl.js"
+  },
+  "dependencies": {
+    "hashpipe": "0.0.10",
+    "minimist": "1.2.x",
+    "somata": "^0.2.7"
+  }
 }
-
